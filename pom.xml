@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.jasonhhouse</groupId>
 	<artifactId>Gaps</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>Gaps</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -63,6 +63,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.jasonhhouse.Gaps.GapsApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
