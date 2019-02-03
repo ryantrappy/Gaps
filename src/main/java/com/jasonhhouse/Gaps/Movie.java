@@ -19,11 +19,13 @@ final class Movie implements Comparable<Movie> {
     private final String name;
     private final int year;
     private final String collection;
+    private final String movieId;
 
-    Movie(String name, int year, String collection) {
+    Movie(String name, int year, String collection, String movieId) {
         this.name = name;
         this.year = year;
         this.collection = collection;
+        this.movieId = movieId;
     }
 
     String getName() {
@@ -50,7 +52,7 @@ final class Movie implements Comparable<Movie> {
 
     @Override
     public String toString() {
-        return name + " (" + year + ")" + (StringUtils.isNotEmpty(collection) ? "  ---  collection='" + collection + '\'' : "");
+        return name + " (" + year + ")" + (StringUtils.isNotEmpty(collection) ? "  ---  collection='" + collection + '\'' + " --- Movie ID=" + movieId : "");
     }
 
     public int compareTo(Movie o) {

@@ -122,7 +122,7 @@ public class GapsApplication implements CommandLineRunner {
                     continue;
                 }
                 String year = node.getAttributes().getNamedItem("year").getNodeValue();
-                Movie movie = new Movie(title, Integer.parseInt(year), "");
+                Movie movie = new Movie(title, Integer.parseInt(year), "", "");
                 plexMovies.add(movie);
             }
             logger.info(plexMovies.size() + " movies found in plex");
@@ -234,6 +234,7 @@ public class GapsApplication implements CommandLineRunner {
                             for (int i = 0; i < parts.length(); i++) {
                                 JSONObject part = parts.getJSONObject(i);
                                 String title = part.getString("original_title");
+                                String movieId = part.getInt("id") + "";
                                 int year;
                                 try {
                                     year = Integer.parseInt(part.getString("release_date").substring(0, 4));
@@ -241,7 +242,7 @@ public class GapsApplication implements CommandLineRunner {
                                     logger.warn("No year found for " + title + ". Value returned was '" + part.getString("release_date") + "'. Skipping adding the movie to recommended list.");
                                     continue;
                                 }
-                                Movie movieFromCollection = new Movie(title, year, collectionName);
+                                Movie movieFromCollection = new Movie(title, year, collectionName, movieId);
 
                                 if (plexMovies.contains(movieFromCollection)) {
                                     searched.add(movieFromCollection);
